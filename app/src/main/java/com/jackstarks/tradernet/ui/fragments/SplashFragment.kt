@@ -51,10 +51,11 @@ class SplashFragment : Fragment() {
             LinearLayoutManager.VERTICAL,
             false
         )
+        adapter = PostAdapter(mutableSetOf(), viewModel)
+        binding.recyclerView.adapter = adapter
         viewModel.tickers.observe(viewLifecycleOwner, object : Observer<MutableSet<Ticker>> {
             override fun onChanged(list: MutableSet<Ticker>) {
-                adapter = PostAdapter(list, viewModel)
-                binding.recyclerView.adapter = adapter
+                adapter.updateData(list)
             }
         })
 

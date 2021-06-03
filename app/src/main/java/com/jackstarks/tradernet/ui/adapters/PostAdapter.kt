@@ -41,6 +41,11 @@ class PostAdapter(
     inner class ViewHolder(val binding: ItemPostBinding) :
         RecyclerView.ViewHolder(binding.root)
 
+    fun updateData(data: MutableSet<Ticker>) {
+        postArrayList.clear()
+        postArrayList.addAll(data)
+        notifyDataSetChanged()
+    }
 
 }
 
